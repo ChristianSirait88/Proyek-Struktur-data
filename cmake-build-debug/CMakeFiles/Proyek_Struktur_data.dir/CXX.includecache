@@ -9,8 +9,6 @@
 /mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/main.cpp
 iostream
 -
-iomanip
--
-stdio.h
+cstring
 -
 

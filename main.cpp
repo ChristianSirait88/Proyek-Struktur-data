@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 
 #define True 1
 #define False 0
@@ -9,12 +9,12 @@ typedef struct typestack *typestck; // Linked List untuk oprasi stack
 typedef struct typenode *typeptr;
 struct typenode {
     int idKurir;
-    char namaKurir[100];
-    char noKendaraan[8];
+    string namaKurir;
+    string noKendaraan;
     typeptr next;
 };
 struct typestack { // deklarasi
-    char namaBarang[100];
+    string namaBarang;
     typestck next;
 };
 
@@ -23,9 +23,9 @@ typestck awalStack, akhirStack;
 
 void pop();
 
-void sisipData(int IB, char IB2[100], char IB3[8]);
+void sisipData(int IB, string IB2, string IB3);
 
-void push(char IB[100]);
+void push(string IB);
 
 void buatStack();
 
@@ -42,8 +42,8 @@ void hapusData(int IH);
 
 int main() {
     int pilihanMenu, jumlahBarang, idKurir, hapus_id;
-    char namaKurir[100], noKendaraan[8], namaBarang[100];
-    string pilihanHapus, pilihanPop;
+    string namaKurir, noKendaraan, namaBarang;
+    char pilihanHapus, pilihanPop;
     char pilihanUlang;
     buatList();
     do {
@@ -63,15 +63,15 @@ int main() {
             cin >> idKurir;
             cin.ignore();
             cout << "Masukan Nama Kurir : ";
-            cin.getline(namaKurir, 100);
+            getline(cin, namaKurir);
             cout << "Masukan No Kendaraan : ";
-            cin >> noKendaraan;
+            getline(cin, noKendaraan);
             sisipData(idKurir, namaKurir, noKendaraan);
             cout << endl;
             cetakList();
             cout << "Apakah Anda Ingin Mengahapus Data ? (y/n) : ";
             cin >> pilihanHapus;
-            if (pilihanHapus == "y" || pilihanHapus == "Y") {
+            if (pilihanHapus == 'y' || pilihanHapus == 'Y') {
                 cout << "Pilih ID Yang Ingin Dihapus : ";
                 cin >> hapus_id;
                 hapusData(hapus_id);
@@ -89,7 +89,7 @@ int main() {
             cin.ignore();
             for (int i = 0; i < jumlahBarang; i++) {
                 cout << "Masukan Nama Barang : ";
-                cin.getline(namaBarang, 100);
+                getline(cin, namaBarang);
                 push(namaBarang);
             }
             cetakStack();
@@ -98,7 +98,7 @@ int main() {
         } else if (pilihanMenu == 3) {
             cout << "Apakah Anda Ingin Mengambil Barang (y/n) : ";
             cin >> pilihanPop;
-            if (pilihanPop == "y" || pilihanPop == "Y") {
+            if (pilihanPop == 'y' || pilihanPop == 'Y') {
                 pop();
             } else {
                 cout << "apakah anda ingin mengulang ?(y/n) : ";
@@ -145,10 +145,11 @@ int stackKosong() {
     }
 }
 
-void push(char IB[100]) {
+void push(string IB) {
     typestck NS;
     NS = (typestack *) malloc(sizeof(typestack));
-    strcpy(NS->namaBarang, IB);
+    NS->namaBarang = IB;
+
     if (awalStack == nullptr)
         awalStack = NS;
     else
@@ -197,12 +198,12 @@ void cetakStack() {
     }
 }
 
-void sisipData(int IB, char IB2[100], char IB3[8]) {
+void sisipData(int IB, string IB2, string IB3) {
     typeptr NB;
     NB = (typenode *) malloc(sizeof(typenode));
     NB->idKurir = IB;
-    strcpy(NB->namaKurir, IB2);
-    strcpy(NB->noKendaraan, IB3);
+    NB->namaKurir = IB2;
+    NB->noKendaraan = IB3;
     if (awal == nullptr) {
         awal = NB;
         akhir = NB;

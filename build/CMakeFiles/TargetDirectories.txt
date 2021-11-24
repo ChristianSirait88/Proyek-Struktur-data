@@ -1,0 +1,3 @@
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/build/CMakeFiles/rebuild_cache.dir
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/build/CMakeFiles/edit_cache.dir
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/build/CMakeFiles/Proyek_Struktur_data.dir
