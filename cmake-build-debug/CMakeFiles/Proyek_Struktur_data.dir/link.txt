@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o -o Proyek_Struktur_data 
