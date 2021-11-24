@@ -29,12 +29,15 @@ void cetak_stack();
 void buatlist();
 void cetak_list();
 int stack_kosong();
+void hapusdata(int IH);
 
 
 int main()
 {
-    int Pilihan_menu,id_kurir;
+    int Pilihan_menu,id_kurir,hapus_id;
     char nama_kurir[100],no_kendaraan[8];
+    string pilihan_hapus;
+    char pilihan_ulang;
     buatlist();
     do
     {
@@ -43,8 +46,8 @@ int main()
         cout << "1. Pendataan Kurir\n";             // linked List & queue
         cout << "2. Data dan Penginputan Barang\n"; // Push Stack
         cout << "3. Pengambilan Barang\n";          // pop stack
-        cout << "4. Riwayat Pengambilan Barang\n";  //sampah
-        cout << "5. Exit\n";                        //exit
+        cout << "4. Riwayat Pengambilan Barang\n";  // sampah
+        cout << "5. Exit\n";                        // exit
         cout << "Masukan Pilihan Anda : ";
         cin >> Pilihan_menu;
 
@@ -59,6 +62,22 @@ int main()
             sisipdata(id_kurir,nama_kurir,no_kendaraan);
             cout<<endl;
             cetak_list();
+            cout<<"Apakah Anda Ingin Mengahapus Data ? (y/n) : ";
+            cin>>pilihan_hapus;
+            if (pilihan_hapus == "y" || pilihan_hapus == "Y")
+            {
+                cout << "Pilih ID Yang Ingin Dihapus : ";
+                cin>>hapus_id;
+                hapusdata(hapus_id);
+                cetak_list();
+            }
+            else
+            {
+            cout<<"apakah anda ingin mengulang ?(y/n) : ";
+            cin>>pilihan_ulang;
+            }
+            
+            
         }
         else if (Pilihan_menu == 2)
         {
@@ -66,8 +85,19 @@ int main()
         else if (Pilihan_menu == 3)
         {
         }
+        else if (Pilihan_menu == 4) {
+            
+        } else if (Pilihan_menu == 5) {
+            break;
+        } else {
+            cout << "Pilihan Anda Salah, Apakah Ingin Mengulang ? (y/n) : ";
+            cin>>pilihan_ulang;
+            system("cls");
 
-    } while (Pilihan_menu <= 6);
+        }
+        
+
+    } while (pilihan_ulang == 'y');
 }
 
 void buatlist()
@@ -174,4 +204,34 @@ void cetak_list() {
         cout<<"No Kendaraan : "<<bantu->no_kendaraan<<endl;
 		bantu=bantu->next;
 	}
+}
+
+void hapusdata(int IH){
+	typeptr hapus,bantu;
+	if (awal==NULL){
+		cout<<"List masih Kosong"<<endl;
+	}
+    else if (IH == awal->id_kurir) {
+			hapus=awal;
+			awal=hapus->next;
+			free(hapus);
+		}
+        else if (IH == akhir->id_kurir){
+            bantu=awal;
+			while (bantu->next->next!=NULL){
+					bantu=bantu->next;
+				}
+					hapus=bantu->next;
+					bantu->next=NULL;
+					free(hapus);
+        }
+	else {
+		bantu=awal;
+			while (IH!=bantu->next->id_kurir && bantu->next != NULL){
+					bantu=bantu->next;
+				}
+					hapus=bantu->next;
+					bantu->next=hapus->next;
+					free(hapus);
+		}
 }
