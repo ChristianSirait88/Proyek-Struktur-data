@@ -1,10 +1,6 @@
 #include <iostream>
 #include <string>
-#include <utility>
-#include <cstring>
 
-#define True 1
-#define False 0
 using namespace std;
 
 typedef struct typestack *typestck; // Linked List untuk oprasi stack
@@ -37,7 +33,7 @@ void buatList();
 
 void cetakList();
 
-int stackKosong();
+bool stackKosong();
 
 void hapusData(int IH);
 
@@ -125,9 +121,7 @@ int main() {
 }
 
 void buatList() {
-    typeptr list;
-    list = new typenode;
-    list = nullptr;
+    typeptr list = nullptr;
     awal = list;
     akhir = list;
 }
@@ -139,65 +133,46 @@ void buatStack() {
     akhirStack = NS;
 }
 
-int stackKosong() {
+bool stackKosong() {
     if (awalStack == nullptr) {
-        return (True);
+        return true;
     } else {
-        return (False);
+        return false;
     }
 }
 
 void push(string IB) {
     typestck NS;
+    typestck bantu;
     NS = new typestack;
     NS->namaBarang = move(IB);
 
     if (awalStack == nullptr)
         awalStack = NS;
-    else
-        akhirStack->next = NS;
-    akhirStack = NS;
-    akhirStack->next = nullptr;
+    else {
+        bantu = awalStack;
+        NS->next = bantu;
+        awalStack = NS;
+    }
 }
 
 void pop() {
-    typestck hapus, bantu;
-    bantu = awalStack;
-    hapus = akhirStack;
-    if (hapus == awalStack)
+    typestck bantu = awalStack;
+    if (awalStack == akhirStack) {
         awalStack = nullptr;
-    else {
-        while (bantu->next->next != nullptr) {
-            bantu = bantu->next;
-        }
-        akhirStack = bantu;
-        akhirStack->next = nullptr;
+    } else {
+        awalStack = awalStack->next;
+        delete bantu;
     }
-    free(hapus);
 }
 
 void cetakStack() {
-    typestck depan, bantu;
-    if (awalStack == akhirStack) {
-        cout << awalStack->namaBarang << endl;
-    } else {
-        depan = awalStack;
-        awalStack = akhirStack;
-        do {
-            bantu = depan;
-            while (bantu->next != akhirStack) {
-                bantu = bantu->next;
-            }
-            akhirStack->next = bantu;
-            akhirStack = bantu;
-        } while (akhirStack != depan);
-        akhirStack->next = nullptr;
-        bantu = awalStack;
-        while (bantu != nullptr) {
-            cout << "" << bantu->namaBarang << endl;
-            bantu = bantu->next;
-        }
+    typestck bantu = awalStack;
+    while (bantu != nullptr) {
+        cout << bantu->namaBarang << " ";
+        bantu = bantu->next;
     }
+    cout << endl;
 }
 
 void sisipData(int IB, string IB2, string IB3) {
