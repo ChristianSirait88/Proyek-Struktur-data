@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <utility>
 
 #define True 1
 #define False 0
@@ -148,7 +149,7 @@ int stackKosong() {
 void push(string IB) {
     typestck NS;
     NS = (typestack *) malloc(sizeof(typestack));
-    NS->namaBarang = IB;
+    NS->namaBarang = move(IB);
 
     if (awalStack == nullptr)
         awalStack = NS;
@@ -202,8 +203,8 @@ void sisipData(int IB, string IB2, string IB3) {
     typeptr NB;
     NB = (typenode *) malloc(sizeof(typenode));
     NB->idKurir = IB;
-    NB->namaKurir = IB2;
-    NB->noKendaraan = IB3;
+    NB->namaKurir = move(IB2);
+    NB->noKendaraan = move(IB3);
     if (awal == nullptr) {
         awal = NB;
         akhir = NB;
