@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <utility>
+#include <cstring>
 
 #define True 1
 #define False 0
@@ -125,7 +126,7 @@ int main() {
 
 void buatList() {
     typeptr list;
-    list = (typenode *) malloc(sizeof(typenode));
+    list = new typenode;
     list = nullptr;
     awal = list;
     akhir = list;
@@ -148,7 +149,7 @@ int stackKosong() {
 
 void push(string IB) {
     typestck NS;
-    NS = (typestack *) malloc(sizeof(typestack));
+    NS = new typestack;
     NS->namaBarang = move(IB);
 
     if (awalStack == nullptr)
@@ -201,7 +202,7 @@ void cetakStack() {
 
 void sisipData(int IB, string IB2, string IB3) {
     typeptr NB;
-    NB = (typenode *) malloc(sizeof(typenode));
+    NB = new typenode;
     NB->idKurir = IB;
     NB->namaKurir = move(IB2);
     NB->noKendaraan = move(IB3);
