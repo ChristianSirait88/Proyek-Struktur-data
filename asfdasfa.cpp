@@ -10,11 +10,11 @@ typedef struct typenode *typeptr;
 struct typenode
 {
     int id_kurir;
-    string nama_kurir,no_kendaraan;
+    char nama_kurir[100],no_kendaraan[8];
     typeptr next;
 };
 struct typestack{ // deklarasi
-    string nama_barang;
+    char nama_barang[100];
     typestck next;
 };
 
@@ -22,8 +22,8 @@ typeptr awal, akhir;
 typestck awalstack, akhirstack;
 
 void pop();
-void sisipdata(int IB,string IB2, string IB3);
-void push(string IB);
+void sisipdata(int IB,char IB2[100], char IB3[8]);
+void push(char IB[100]);
 void buat_stack();
 void cetak_stack();
 void buatlist();
@@ -34,13 +34,13 @@ int stack_kosong();
 int main()
 {
     int Pilihan_menu,id_kurir;
-    string nama_kurir,no_kendaraan;
+    char nama_kurir[100],no_kendaraan[8];
     buatlist();
     do
     {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
-        cout << "1. Pendataan Kurir\n";             //linked List & queue
+        cout << "1. Pendataan Kurir\n";             // linked List & queue
         cout << "2. Data dan Penginputan Barang\n"; // Push Stack
         cout << "3. Pengambilan Barang\n";          // pop stack
         cout << "4. Riwayat Pengambilan Barang\n";  //sampah
@@ -95,10 +95,10 @@ int stack_kosong(){
     }
 }
 
-void push(int IB){ 
+void push(char IB[100]){ 
     typestck NS;
     NS=(typestack *) malloc(sizeof(typestack));
-    NS->nama_barang=IB;
+    strcpy(NS->nama_barang,IB);
     if (awalstack==NULL)
         awalstack=NS;
     else
@@ -148,12 +148,12 @@ void cetak_stack(){
     }
 }
 
-void sisipdata(int IB,string IB2, string IB3){
+void sisipdata(int IB,char IB2[100], char IB3[8]){
     typeptr NB;
     NB=(typenode *) malloc(sizeof(typenode));
     NB->id_kurir=IB;
-    NB->nama_kurir=IB2;
-    NB->no_kendaraan=IB3;
+    strcpy(NB->nama_kurir,IB2);
+	strcpy(NB->no_kendaraan,IB3);
     if(awal==NULL){
         awal=NB;
         akhir=NB;
