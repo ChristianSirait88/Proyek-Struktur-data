@@ -34,9 +34,9 @@ void hapusdata(int IH);
 
 int main()
 {
-    int Pilihan_menu,id_kurir,hapus_id;
-    char nama_kurir[100],no_kendaraan[8];
-    string pilihan_hapus;
+    int Pilihan_menu,jumlah_barang,id_kurir,hapus_id;
+    char nama_kurir[100],no_kendaraan[8],nama_barang[100];
+    string pilihan_hapus,pilihan_pop;
     char pilihan_ulang;
     buatlist();
     do
@@ -53,10 +53,12 @@ int main()
 
         if (Pilihan_menu == 1)
         {
-            cout << "Masukan ID Kurir";
+            system("cls");
+            cout << "Masukan ID Kurir : ";
             cin>>id_kurir;
+            cin.ignore();
             cout << "Masukan Nama Kurir : ";
-            cin>>nama_kurir;
+            cin.getline(nama_kurir,100);
             cout << "Masukan No Kendaraan : ";
             cin >> no_kendaraan;
             sisipdata(id_kurir,nama_kurir,no_kendaraan);
@@ -70,6 +72,7 @@ int main()
                 cin>>hapus_id;
                 hapusdata(hapus_id);
                 cetak_list();
+
             }
             else
             {
@@ -81,13 +84,37 @@ int main()
         }
         else if (Pilihan_menu == 2)
         {
+            cout<<"Berapa Barang Yang Akan Di Data : ";
+            cin>>jumlah_barang;
+            cin.ignore();
+            for (int i=0;i<jumlah_barang;i++){
+                cout<<"Masukan Nama Barang : ";
+                cin.getline(nama_barang,100);
+                push(nama_barang);
+            }
+            cetak_stack();
+             cout<<"apakah anda ingin mengulang ?(y/n) : ";
+            cin>>pilihan_ulang;
         }
         else if (Pilihan_menu == 3)
         {
+            cout<<"Apakah Anda Ingin Mengambil Barang (y/n) : ";
+            cin>>pilihan_pop;
+            if (pilihan_pop == "y" || pilihan_pop=="Y")
+            {
+                pop();
+            }
+            else{
+                cout<<"apakah anda ingin mengulang ?(y/n) : ";
+                cin>>pilihan_ulang;
+            }
+            cetak_stack();
+            
         }
         else if (Pilihan_menu == 4) {
             
         } else if (Pilihan_menu == 5) {
+            cout<<"Terima Kasih Telah Menggunakan Program\n";
             break;
         } else {
             cout << "Pilihan Anda Salah, Apakah Ingin Mengulang ? (y/n) : ";
@@ -145,7 +172,7 @@ void pop(){
         awalstack=NULL;
     else{ 
         while(bantu->next->next!=NULL){
-    bantu=bantu->next;
+        bantu=bantu->next;
     }
     akhirstack=bantu;
     akhirstack->next=NULL; }
