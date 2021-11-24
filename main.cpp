@@ -39,11 +39,12 @@ void hapusData(int IH);
 
 
 int main() {
-    int pilihanMenu, jumlahBarang, idKurir, hapus_id;
+    int pilihanMenu, jumlahBarang, idKurir, hapusId;
     string namaKurir, noKendaraan, namaBarang;
     char pilihanHapus, pilihanPop;
     char pilihanUlang;
     buatList();
+    buatStack();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -71,8 +72,8 @@ int main() {
             cin >> pilihanHapus;
             if (pilihanHapus == 'y' || pilihanHapus == 'Y') {
                 cout << "Pilih ID Yang Ingin Dihapus : ";
-                cin >> hapus_id;
-                hapusData(hapus_id);
+                cin >> hapusId;
+                hapusData(hapusId);
                 cetakList();
 
             } else {
