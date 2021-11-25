@@ -6,45 +6,45 @@ using namespace std;
 typedef struct typestack *typestck; // Linked List untuk oprasi stack
 typedef struct typenode *typeptr;
 struct typenode {
-    int idKurir;
-    string namaKurir;
-    string noKendaraan;
+    int id_kurir;
+    string nama_kurir;
+    string no_kendaraan;
     typeptr next;
 };
 struct typestack { // deklarasi
-    string namaBarang;
+    string nama_barang;
     typestck next;
 };
 
 typeptr awal, akhir;
-typestck awalStack, akhirStack;
+typestck awal_stack, akhir_stack;
 
 void pop();
 
-void sisipData(int IB, string IB2, string IB3);
+void sisip_data(int IB, string IB2, string IB3);
 
 void push(string IB);
 
-void buatStack();
+void buat_stack();
 
-void cetakStack();
+void cetak_stack();
 
-void buatList();
+void buat_list();
 
-void cetakList();
+void cetak_list();
 
-bool stackKosong();
+bool stack_kosong();
 
-void hapusData(int IH);
+void hapus_data(int IH);
 
 
 int main() {
-    int pilihanMenu, jumlahBarang, idKurir, hapusId;
-    string namaKurir, noKendaraan, namaBarang;
-    char pilihanHapus, pilihanPop;
-    char pilihanUlang;
-    buatList();
-    buatStack();
+    int pilihan_menu, jumlah_barang, id_kurir, hapus_id;
+    string nama_kurir, no_kendaraan, nama_barang;
+    char pilihan_hapus, pilihan_pop;
+    char pilihan_ulang;
+    buat_list();
+    buat_stack();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -54,88 +54,88 @@ int main() {
         cout << "4. Riwayat Pengambilan Barang\n";  // sampah
         cout << "5. Exit\n";                        // exit
         cout << "Masukan Pilihan Anda : ";
-        cin >> pilihanMenu;
+        cin >> pilihan_menu;
 
-        if (pilihanMenu == 1) {
+        if (pilihan_menu == 1) {
             system("cls");
             cout << "Masukan ID Kurir : ";
-            cin >> idKurir;
+            cin >> id_kurir;
             cin.ignore();
             cout << "Masukan Nama Kurir : ";
-            getline(cin, namaKurir);
+            getline(cin, nama_kurir);
             cout << "Masukan No Kendaraan : ";
-            getline(cin, noKendaraan);
-            sisipData(idKurir, namaKurir, noKendaraan);
+            getline(cin, no_kendaraan);
+            sisip_data(id_kurir, nama_kurir, no_kendaraan);
             cout << endl;
-            cetakList();
+            cetak_list();
             cout << "Apakah Anda Ingin Mengahapus Data ? (y/n) : ";
-            cin >> pilihanHapus;
-            if (pilihanHapus == 'y' || pilihanHapus == 'Y') {
+            cin >> pilihan_hapus;
+            if (pilihan_hapus == 'y' || pilihan_hapus == 'Y') {
                 cout << "Pilih ID Yang Ingin Dihapus : ";
-                cin >> hapusId;
-                hapusData(hapusId);
-                cetakList();
+                cin >> hapus_id;
+                hapus_data(hapus_id);
+                cetak_list();
 
             } else {
                 cout << "apakah anda ingin mengulang ?(y/n) : ";
-                cin >> pilihanUlang;
+                cin >> pilihan_ulang;
             }
 
 
-        } else if (pilihanMenu == 2) {
+        } else if (pilihan_menu == 2) {
             cout << "Berapa Barang Yang Akan Di Data : ";
-            cin >> jumlahBarang;
+            cin >> jumlah_barang;
             cin.ignore();
-            for (int i = 0; i < jumlahBarang; i++) {
+            for (int i = 0; i < jumlah_barang; i++) {
                 cout << "Masukan Nama Barang : ";
-                getline(cin, namaBarang);
-                push(namaBarang);
+                getline(cin, nama_barang);
+                push(nama_barang);
             }
-            cetakStack();
+            cetak_stack();
             cout << "apakah anda ingin mengulang ?(y/n) : ";
-            cin >> pilihanUlang;
-        } else if (pilihanMenu == 3) {
+            cin >> pilihan_ulang;
+        } else if (pilihan_menu == 3) {
             cout << "Apakah Anda Ingin Mengambil Barang (y/n) : ";
-            cin >> pilihanPop;
-            if (pilihanPop == 'y' || pilihanPop == 'Y') {
+            cin >> pilihan_pop;
+            if (pilihan_pop == 'y' || pilihan_pop == 'Y') {
                 pop();
             } else {
                 cout << "apakah anda ingin mengulang ?(y/n) : ";
-                cin >> pilihanUlang;
+                cin >> pilihan_ulang;
             }
-            cetakStack();
+            cetak_stack();
 
-        } else if (pilihanMenu == 4) {
+        } else if (pilihan_menu == 4) {
 
-        } else if (pilihanMenu == 5) {
+        } else if (pilihan_menu == 5) {
             cout << "Terima Kasih Telah Menggunakan Program\n";
             break;
         } else {
             cout << "Pilihan Anda Salah, Apakah Ingin Mengulang ? (y/n) : ";
-            cin >> pilihanUlang;
+            cin >> pilihan_ulang;
             system("cls");
 
         }
 
 
-    } while (pilihanUlang == 'y');
+    } while (pilihan_ulang == 'y');
 }
 
-void buatList() {
+void buat_list() {
     typeptr list = nullptr;
     awal = list;
     akhir = list;
 }
 
-void buatStack() {
+void buat_stack() {
     typestck NS;
     NS = nullptr;
-    awalStack = NS;
-    akhirStack = NS;
+    awal_stack = NS;
+    akhir_stack = NS;
 }
 
-bool stackKosong() {
-    if (awalStack == nullptr) {
+bool stack_kosong() {
+    if (awal_stack == nullptr) {
         return true;
     } else {
         return false;
@@ -146,42 +146,42 @@ void push(string IB) {
     typestck NS;
     typestck bantu;
     NS = new typestack;
-    NS->namaBarang = move(IB);
+    NS->nama_barang = move(IB);
 
-    if (awalStack == nullptr)
-        awalStack = NS;
+    if (awal_stack == nullptr)
+        awal_stack = NS;
     else {
-        bantu = awalStack;
+        bantu = awal_stack;
         NS->next = bantu;
-        awalStack = NS;
+        awal_stack = NS;
     }
 }
 
 void pop() {
-    typestck bantu = awalStack;
-    if (awalStack == akhirStack) {
-        awalStack = nullptr;
+    typestck bantu = awal_stack;
+    if (awal_stack == akhir_stack) {
+        awal_stack = nullptr;
     } else {
-        awalStack = awalStack->next;
+        awal_stack = awal_stack->next;
         delete bantu;
     }
 }
 
-void cetakStack() {
-    typestck bantu = awalStack;
+void cetak_stack() {
+    typestck bantu = awal_stack;
     while (bantu != nullptr) {
-        cout << bantu->namaBarang << " ";
+        cout << bantu->nama_barang << " ";
         bantu = bantu->next;
     }
     cout << endl;
 }
 
-void sisipData(int IB, string IB2, string IB3) {
+void sisip_data(int IB, string IB2, string IB3) {
     typeptr NB;
     NB = new typenode;
-    NB->idKurir = IB;
-    NB->namaKurir = move(IB2);
-    NB->noKendaraan = move(IB3);
+    NB->id_kurir = IB;
+    NB->nama_kurir = move(IB2);
+    NB->no_kendaraan = move(IB3);
     if (awal == nullptr) {
         awal = NB;
         akhir = NB;
@@ -192,26 +192,26 @@ void sisipData(int IB, string IB2, string IB3) {
     awal = NB;
 }
 
-void cetakList() {
+void cetak_list() {
     typeptr bantu;
     bantu = awal;
     while (bantu != nullptr) {
-        cout << "ID Kurir : " << bantu->idKurir << endl;
-        cout << "Nama Kurir : " << bantu->namaKurir << endl;
-        cout << "No Kendaraan : " << bantu->noKendaraan << endl;
+        cout << "ID Kurir : " << bantu->id_kurir << endl;
+        cout << "Nama Kurir : " << bantu->nama_kurir << endl;
+        cout << "No Kendaraan : " << bantu->no_kendaraan << endl;
         bantu = bantu->next;
     }
 }
 
-void hapusData(int IH) {
+void hapus_data(int IH) {
     typeptr hapus, bantu;
     if (awal == nullptr) {
         cout << "List masih Kosong" << endl;
-    } else if (IH == awal->idKurir) {
+    } else if (IH == awal->id_kurir) {
         hapus = awal;
         awal = hapus->next;
         free(hapus);
-    } else if (IH == akhir->idKurir) {
+    } else if (IH == akhir->id_kurir) {
         bantu = awal;
         while (bantu->next->next != nullptr) {
             bantu = bantu->next;
@@ -221,7 +221,7 @@ void hapusData(int IH) {
         free(hapus);
     } else {
         bantu = awal;
-        while (IH != bantu->next->idKurir && bantu->next != nullptr) {
+        while (IH != bantu->next->id_kurir && bantu->next != nullptr) {
             bantu = bantu->next;
         }
         hapus = bantu->next;
