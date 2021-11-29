@@ -1,11 +1,12 @@
 #include <iostream>
-#include <string>
 #include <malloc.h>
-#include <iomanip>
+#include <string>
+
 using namespace std;
 
-typedef struct typestack *typestck; // Linked List untuk oprasi stack
+typedef struct typestack_sampah *typeptr_sampah; // linked list untuk oprasi stack sampah
 typedef struct typequeue *typeptr_que;
+typedef struct typestack *typestck; // Linked List untuk oprasi stack
 typedef struct typenode *typeptr;
 struct typenode {
     int id_kurir;
@@ -21,10 +22,15 @@ struct typequeue{
     int que;
     typeptr_que next_que;
 };
+struct typestack_sampah{ //deklarasi
+    string sampah;
+    typeptr_sampah next_sampah;
+};
 
-typeptr_que qdepan, qbelakang;
 typeptr awal, akhir;
 typestck awal_stack, akhir_stack;
+typeptr_que qdepan, qbelakang;
+typeptr_sampah awalsampah,akhirsampah;
 
 void pop();
 
@@ -54,15 +60,21 @@ int queuekosong();
 
 void enqueue(int IB);
 
+void sampah();
+
+void cetak_sampah();
+
+void buat_stack_sampah();
+
 
 int main() {
-    int pilihan_menu,pilihan_barang,pilihan_pop, jumlah_barang, id_kurir, hapus_id;
-    string pilihan_kurir,nama_kurir, no_kendaraan, nama_barang;
-    char pilihan_hapus;
+    int pilihan_barang,pilihan_menu, jumlah_barang, id_kurir, hapus_id;
+    string nama_kurir, no_kendaraan, nama_barang;
+    char pilihan_hapus, pilihan_pop;
     char pilihan_ulang;
     buat_list();
     buat_stack();
-    buatqueue();
+    buat_stack_sampah();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -75,6 +87,7 @@ int main() {
         cin >> pilihan_menu;
 
         if (pilihan_menu == 1) {
+            buatqueue();
             system("cls");
             cout << "Masukan ID Kurir : ";
             cin >> id_kurir;
@@ -83,8 +96,8 @@ int main() {
             getline(cin, nama_kurir);
             cout << "Masukan No Kendaraan : ";
             getline(cin, no_kendaraan);
-            enqueue(id_kurir);
             sisip_data(id_kurir, nama_kurir, no_kendaraan);
+            enqueue(id_kurir);
             cout << endl;
             cetak_list();
             cetakqueue();
@@ -105,13 +118,15 @@ int main() {
         } else if (pilihan_menu == 2) {
             cout << "--- Menu Penginputan Barang ---\n";
             cout<<"1. Input Barang\n";
-            cout <<"2. Lihat Barang\n";
-            if (pilihan_barang == 1)
+            cout << "2. Lihat Barang\n";
+            cout << "Pilihan Menu : ";
+            cin >> pilihan_barang;;
+           if (pilihan_barang == 1)
             {
                 cout << "Berapa Barang Yang Akan Di Data : ";
                 cin >> jumlah_barang;
                 cin.ignore();
-                for (int i = 0; i < jumlah_barang; i++) {
+                for (int i = 1; i <= jumlah_barang; i++) {
                     cout << "Masukan Nama Barang : ";
                     getline(cin, nama_barang);
                     push(nama_barang);
@@ -125,24 +140,19 @@ int main() {
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 3) {
             cout << "Apakah Anda Ingin Mengambil Barang (y/n) : ";
-            cin>> pilihan_kurir;
-            if (pilihan_kurir == "y" || pilihan_kurir == "Y") {
-                cout << "Berapa Barang Yang Ingin Diambil : ";
-                cin >> pilihan_pop;
-                for (int i = 0; i < pilihan_pop; i++) 
-                {
-                    pop();
-                }
-                cout<<"Sisa Barang : \n";
-                cetak_stack();
-            }
-            else {
+            cin >> pilihan_pop;
+            if (pilihan_pop == 'y' || pilihan_pop == 'Y') {
+                sampah();
+                pop();
+            } else {
                 cout << "apakah anda ingin mengulang ?(y/n) : ";
                 cin >> pilihan_ulang;
             }
+            cetak_stack();
 
         } else if (pilihan_menu == 4) {
-
+                cout << "Barang Yang Sudah Diambil\n";
+                cetak_sampah();
         } else if (pilihan_menu == 5) {
             cout << "Terima Kasih Telah Menggunakan Program\n";
             break;
@@ -158,7 +168,8 @@ int main() {
 }
 
 void buat_list() {
-    typeptr list = nullptr;
+    typeptr list;
+    list=nullptr;
     awal = list;
     akhir = list;
 }
@@ -205,11 +216,10 @@ void pop() {
 
 void cetak_stack() {
     typestck bantu = awal_stack;
-    while (bantu != nullptr) {
-        cout << bantu->nama_barang << " ";
+    while (bantu != NULL) {
+        cout << bantu->nama_barang << "\n";
         bantu = bantu->next;
     }
-    cout << endl;
 }
 
 void sisip_data(int IB, string IB2, string IB3) {
@@ -221,7 +231,7 @@ void sisip_data(int IB, string IB2, string IB3) {
     if (awal == nullptr) {
         awal = NB;
         akhir = NB;
-        awal->next = nullptr;
+        awal->next = NULL;
     } else {
         NB->next = awal;
     }
@@ -231,7 +241,7 @@ void sisip_data(int IB, string IB2, string IB3) {
 void cetak_list() {
     typeptr bantu;
     bantu = awal;
-    while (bantu != nullptr) {
+    while (bantu != NULL) {
         cout << "ID Kurir : " << bantu->id_kurir << endl;
         cout << "Nama Kurir : " << bantu->nama_kurir << endl;
         cout << "No Kendaraan : " << bantu->no_kendaraan << endl;
@@ -266,8 +276,8 @@ void hapus_data(int IH) {
     }
 }
 void buatqueue(){ 
-    qdepan=(typequeue *) malloc(sizeof(typequeue));
-    qdepan=NULL;
+    typeptr_que qdepan;
+    qdepan=nullptr;
     qbelakang=qdepan;
 }
 
@@ -293,12 +303,12 @@ void cetakqueue(){
 
 void enqueue(int IB){ 
     typeptr_que NB;
-    NB=(typequeue *) malloc(sizeof(typequeue));
+    NB=new typequeue;
     NB->que=IB;
     if (qdepan==NULL)
         qdepan=NB;
     else
-    qbelakang->next_que=NB;
+    qdepan->next_que=NB;
     qbelakang=NB;
     qbelakang->next_que=NULL;
 }
@@ -315,3 +325,48 @@ void dequeue()
         free(hapus); 
     }
 }
+
+void buat_stack_sampah() {
+    typeptr_sampah NS;
+    NS = nullptr;
+    awalsampah = NS;
+    akhirsampah = NS;;
+}
+
+void cetak_sampah(){ 
+    typeptr_sampah depan,bantu;
+    if(awalsampah==akhirsampah){
+        cout<<awalsampah->sampah <<endl;
+    } 
+    else { 
+        depan=awalsampah;
+        awalsampah=akhirsampah;
+        do { 
+            bantu=depan;
+            while (bantu->next_sampah!=akhirsampah){
+            bantu=bantu->next_sampah;
+            }
+            akhirsampah->next_sampah=bantu;
+            akhirsampah=bantu;
+        }
+        while (akhirsampah!=depan);
+        akhirsampah->next_sampah=NULL;
+        bantu=awalsampah;
+        while(bantu!=NULL){ 
+            cout << "" << bantu->sampah << endl;
+            bantu=bantu->next_sampah; 
+        }
+    }
+}
+
+void sampah(){
+    typeptr_sampah NS,bantu;
+    NS=new typestack_sampah;
+    NS->sampah=move(awal_stack->nama_barang); // nilai NS akan sama dengan Nilai akhirstack
+    if (awalsampah==nullptr)
+         awalsampah=NS;
+    else
+        bantu = awalsampah;
+        NS->next_sampah = bantu;
+        awalsampah = NS;
+    }

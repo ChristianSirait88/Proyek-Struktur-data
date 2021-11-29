@@ -132,29 +132,7 @@ CMakeFiles/Proyek_Struktur_data.dir/main.cpp.obj: ../main.cpp \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc \
   C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iomanip \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/locale \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_facets_nonio.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ctime \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/time.h \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/_timeval.h \
-  C:/TDM-GCC-64/x86_64-w64-mingw32/include/pthread_time.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/codecvt.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_facets_nonio.tcc \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_conv.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/unique_ptr.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/utility \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_relops.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/tuple \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/array \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/uses_allocator.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/invoke.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/quoted_string.h \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/sstream \
-  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/sstream.tcc
+  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc
 
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/string:
@@ -182,8 +160,6 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/debug/debug.h:
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ostream:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iosfwd:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/iomanip:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cstdlib:
 
@@ -321,15 +297,11 @@ C:/TDM-GCC-64/x86_64-w64-mingw32/include/pthread.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/errno.h:
 
-C:/TDM-GCC-64/x86_64-w64-mingw32/include/time.h:
-
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/sys/types.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/process.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/corecrt_startup.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/sstream:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed/limits.h:
 
@@ -405,15 +377,11 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/streambuf:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/streambuf.tcc:
 
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/quoted_string.h:
-
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/basic_ios.h:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_facets.h:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/cwctype:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_facets_nonio.h:
 
 C:/TDM-GCC-64/x86_64-w64-mingw32/include/wctype.h:
 
@@ -430,37 +398,3 @@ C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/ostream.tcc:
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/istream:
 
 C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/istream.tcc:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/locale:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/ctime:
-
-C:/TDM-GCC-64/x86_64-w64-mingw32/include/_timeval.h:
-
-C:/TDM-GCC-64/x86_64-w64-mingw32/include/pthread_time.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/codecvt.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_facets_nonio.tcc:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/locale_conv.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/array:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/unique_ptr.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/sstream.tcc:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/utility:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/stl_relops.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/tuple:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/uses_allocator.h:
-
-C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++/bits/invoke.h:
