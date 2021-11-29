@@ -66,6 +66,11 @@ void cetak_sampah();
 
 void buat_stack_sampah();
 
+bool listkosong();
+bool carikurir(int id);
+
+bool cariqueue(int id);
+
 
 int main() {
     int pilihan_barang,pilihan_menu, jumlah_barang, id_kurir, hapus_id;
@@ -87,34 +92,50 @@ int main() {
         cin >> pilihan_menu;
 
         if (pilihan_menu == 1) {
-            buatqueue();
             system("cls");
-            cout << "Masukan ID Kurir : ";
-            cin >> id_kurir;
-            cin.ignore();
-            cout << "Masukan Nama Kurir : ";
-            getline(cin, nama_kurir);
-            cout << "Masukan No Kendaraan : ";
-            getline(cin, no_kendaraan);
-            sisip_data(id_kurir, nama_kurir, no_kendaraan);
-            enqueue(id_kurir);
-            cout << endl;
-            cetak_list();
-            cetakqueue();
-            cout << "Apakah Anda Ingin Mengahapus Data ? (y/n) : ";
-            cin >> pilihan_hapus;
-            if (pilihan_hapus == 'y' || pilihan_hapus == 'Y') {
-                cout << "Pilih ID Yang Ingin Dihapus : ";
+            cout << "---- Pendataan Kurir ----\n";
+            cout << "1. Penambahan Kurir\n";
+            cout << "2. Daftar Kurir\n";
+            cout << "3. Hapus Kurir\n";
+            cout << "Masukkan Pilihan Anda : ";
+            cin >> pilihan_menu;
+            if (pilihan_menu == 1) {
+                system("cls");
+                cout << "---- Penambahan Kurir ----\n";
+                cout << "Masukan ID Kurir : ";
+                cin >> id_kurir;
+                cin.ignore();
+                cout << "Masukan Nama Kurir : ";
+                getline(cin, nama_kurir);
+                cout << "Masukan No Kendaraan : ";
+                getline(cin, no_kendaraan);
+                enqueue(id_kurir);
+                sisip_data(id_kurir, nama_kurir, no_kendaraan);
+                cout << "Penambahan Kurir Berhasil\n";
+            } else if (pilihan_menu == 2) {
+                system("cls");
+                cout << "---- Daftar Kurir ----\n";
+                if (listkosong()) {
+                    cout << "Kurir masih kosong\n";
+                } else {
+                    cetak_list();
+                }
+            } else if (pilihan_menu == 3) {
+                system("cls");
+                cout << "---- Hapus Kurir ----\n";
+                cout << "Masukkan ID Kurir yang ingin dihapus: ";
                 cin >> hapus_id;
-                hapus_data(hapus_id);
-                cetak_list();
-
-            } else {
-                cout << "apakah anda ingin mengulang ?(y/n) : ";
-                cin >> pilihan_ulang;
+                cout << "Apakah Anda Yakin Untuk Mengahapus Data ? (Y/n) : ";
+                cin >> pilihan_hapus;
+                if ((pilihan_hapus == 'y' || pilihan_hapus == 'Y') && carikurir(id_kurir)) {
+                    hapus_data(hapus_id);
+                    cout << "Penghapusan kurir berhasil\n";
+                } else  {
+                    cout << "Penghapusan kurir gagal\n";
+                }
             }
-
-
+            cout << "Apakah Ingin Mengulangi Menu ? (y/n) : ";
+            cin >> pilihan_ulang;
         } else if (pilihan_menu == 2) {
             cout << "--- Menu Penginputan Barang ---\n";
             cout<<"1. Input Barang\n";
@@ -369,4 +390,30 @@ void sampah(){
         bantu = awalsampah;
         NS->next_sampah = bantu;
         awalsampah = NS;
+}
+
+bool listkosong() {
+    return awal == nullptr;
+}
+
+bool carikurir(int id) {
+    typeptr bantu = awal;
+    while (bantu != nullptr) {
+        if (bantu->id_kurir == id) {
+            return true;
+        }
+        bantu = bantu->next;
     }
+    return false;
+}
+
+bool cariqueue(int id) {
+    typeptr_que bantu = qdepan;
+    while (bantu != nullptr) {
+        if (bantu->next_que->que == id) {
+            return true;
+        }
+        bantu = bantu->next_que;
+    }
+    return false;
+}
