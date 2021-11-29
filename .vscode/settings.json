@@ -14,5 +14,6 @@
   "C_Cpp_Runner.warningsAsError": false,
   "files.associations": {
     "iostream": "cpp"
-  }
+  },
+  "cmake.configureOnOpen": true
 }

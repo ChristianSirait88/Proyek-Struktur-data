@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
-
+#include <malloc.h>
+#include <iomanip>
 using namespace std;
 
 typedef struct typestack *typestck; // Linked List untuk oprasi stack
+typedef struct typequeue *typeptr_que;
 typedef struct typenode *typeptr;
 struct typenode {
     int id_kurir;
@@ -15,7 +17,12 @@ struct typestack { // deklarasi
     string nama_barang;
     typestck next;
 };
+struct typequeue{
+    int que;
+    typeptr_que next_que;
+};
 
+typeptr_que qdepan, qbelakang;
 typeptr awal, akhir;
 typestck awal_stack, akhir_stack;
 
@@ -37,14 +44,25 @@ bool stack_kosong();
 
 void hapus_data(int IH);
 
+void buatqueue();
+
+void cetakqueue();
+
+void dequeue();
+
+int queuekosong();
+
+void enqueue(int IB);
+
 
 int main() {
-    int pilihan_menu, jumlah_barang, id_kurir, hapus_id;
-    string nama_kurir, no_kendaraan, nama_barang;
-    char pilihan_hapus, pilihan_pop;
+    int pilihan_menu,pilihan_barang,pilihan_pop, jumlah_barang, id_kurir, hapus_id;
+    string pilihan_kurir,nama_kurir, no_kendaraan, nama_barang;
+    char pilihan_hapus;
     char pilihan_ulang;
     buat_list();
     buat_stack();
+    buatqueue();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -65,9 +83,11 @@ int main() {
             getline(cin, nama_kurir);
             cout << "Masukan No Kendaraan : ";
             getline(cin, no_kendaraan);
+            enqueue(id_kurir);
             sisip_data(id_kurir, nama_kurir, no_kendaraan);
             cout << endl;
             cetak_list();
+            cetakqueue();
             cout << "Apakah Anda Ingin Mengahapus Data ? (y/n) : ";
             cin >> pilihan_hapus;
             if (pilihan_hapus == 'y' || pilihan_hapus == 'Y') {
@@ -83,27 +103,43 @@ int main() {
 
 
         } else if (pilihan_menu == 2) {
-            cout << "Berapa Barang Yang Akan Di Data : ";
-            cin >> jumlah_barang;
-            cin.ignore();
-            for (int i = 0; i < jumlah_barang; i++) {
-                cout << "Masukan Nama Barang : ";
-                getline(cin, nama_barang);
-                push(nama_barang);
+            cout << "--- Menu Penginputan Barang ---\n";
+            cout<<"1. Input Barang\n";
+            cout <<"2. Lihat Barang\n";
+            if (pilihan_barang == 1)
+            {
+                cout << "Berapa Barang Yang Akan Di Data : ";
+                cin >> jumlah_barang;
+                cin.ignore();
+                for (int i = 0; i < jumlah_barang; i++) {
+                    cout << "Masukan Nama Barang : ";
+                    getline(cin, nama_barang);
+                    push(nama_barang);
+                }
             }
-            cetak_stack();
+            else if (pilihan_barang == 2){
+                cout << "Data Barang\n";
+                cetak_stack();
+            }
             cout << "apakah anda ingin mengulang ?(y/n) : ";
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 3) {
             cout << "Apakah Anda Ingin Mengambil Barang (y/n) : ";
-            cin >> pilihan_pop;
-            if (pilihan_pop == 'y' || pilihan_pop == 'Y') {
-                pop();
-            } else {
+            cin>> pilihan_kurir;
+            if (pilihan_kurir == "y" || pilihan_kurir == "Y") {
+                cout << "Berapa Barang Yang Ingin Diambil : ";
+                cin >> pilihan_pop;
+                for (int i = 0; i < pilihan_pop; i++) 
+                {
+                    pop();
+                }
+                cout<<"Sisa Barang : \n";
+                cetak_stack();
+            }
+            else {
                 cout << "apakah anda ingin mengulang ?(y/n) : ";
                 cin >> pilihan_ulang;
             }
-            cetak_stack();
 
         } else if (pilihan_menu == 4) {
 
@@ -227,5 +263,55 @@ void hapus_data(int IH) {
         hapus = bantu->next;
         bantu->next = hapus->next;
         free(hapus);
+    }
+}
+void buatqueue(){ 
+    qdepan=(typequeue *) malloc(sizeof(typequeue));
+    qdepan=NULL;
+    qbelakang=qdepan;
+}
+
+int queuekosong(){ 
+    if(qdepan==NULL){
+        return(1);
+    }
+    else{
+        return(0);
+    }
+}
+
+
+void cetakqueue(){
+    typeptr_que bantu_que;
+    bantu_que=qdepan;
+    do {
+        cout << " " << bantu_que->que;
+        cout << " ";
+        bantu_que=bantu_que->next_que;
+    } while(bantu_que!=NULL);
+}
+
+void enqueue(int IB){ 
+    typeptr_que NB;
+    NB=(typequeue *) malloc(sizeof(typequeue));
+    NB->que=IB;
+    if (qdepan==NULL)
+        qdepan=NB;
+    else
+    qbelakang->next_que=NB;
+    qbelakang=NB;
+    qbelakang->next_que=NULL;
+}
+
+void dequeue()
+{
+    typeptr_que hapus;
+    if (queuekosong()){ 
+        cout << "Queue masih kosong !";
+    }
+    else{ 
+        hapus=qdepan;
+        qdepan=hapus->next_que;
+        free(hapus); 
     }
 }
