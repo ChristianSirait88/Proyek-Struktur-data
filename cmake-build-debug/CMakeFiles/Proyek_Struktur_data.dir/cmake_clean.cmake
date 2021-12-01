@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o"
+  "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o.d"
   "Proyek_Struktur_data"
   "Proyek_Struktur_data.pdb"
 )

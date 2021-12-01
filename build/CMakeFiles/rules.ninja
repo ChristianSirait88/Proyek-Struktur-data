@@ -42,7 +42,7 @@ rule CXX_EXECUTABLE_LINKER__Proyek_Struktur_data_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake --regenerate-during-build -S"/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data" -B"/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/build"
+  command = /usr/bin/cmake --regenerate-during-build -S"/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek" -B"/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/build"
   description = Re-running CMake...
   generator = 1
 

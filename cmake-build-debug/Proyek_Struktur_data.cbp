@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug"/>
+				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug"/>
+				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug"/>
+				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyek_Struktur_data">
-				<Option output="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug/Proyek_Struktur_data" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug"/>
+				<Option output="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/Proyek_Struktur_data" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyek_Struktur_data"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyek_Struktur_data"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyek_Struktur_data/fast">
-				<Option output="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug/Proyek_Struktur_data" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/cmake-build-debug"/>
+				<Option output="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/Proyek_Struktur_data" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,17 +75,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyek_Struktur_data/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Struktur\ Data/Proyek-Struktur-data/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyek_Struktur_data/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/EED8B363D8B3292B/Informatics/Sm\ 3/Praktikum\ Implementasi\ Struktur\ Data/Proyek/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/main.cpp">
+		<Unit filename="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/main.cpp">
 			<Option target="Proyek_Struktur_data"/>
 		</Unit>
-		<Unit filename="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Struktur Data/Proyek-Struktur-data/CMakeLists.txt">
+		<Unit filename="/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
