@@ -1,3 +1,3 @@
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/build/CMakeFiles/rebuild_cache.dir
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/build/CMakeFiles/edit_cache.dir
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/build/CMakeFiles/Proyek_Struktur_data.dir
+C:/Users/Christian Sirait/Desktop/kuli dan yeah/Semester 3/Struktur Data/Program/Proyek-Struktur-data/build/CMakeFiles/Proyek_Struktur_data.dir
+C:/Users/Christian Sirait/Desktop/kuli dan yeah/Semester 3/Struktur Data/Program/Proyek-Struktur-data/build/CMakeFiles/edit_cache.dir
+C:/Users/Christian Sirait/Desktop/kuli dan yeah/Semester 3/Struktur Data/Program/Proyek-Struktur-data/build/CMakeFiles/rebuild_cache.dir

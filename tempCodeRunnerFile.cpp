@@ -1,1 +1,1 @@
-cetakqueue();
+ ios::trunc
