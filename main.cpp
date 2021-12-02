@@ -7,51 +7,63 @@
 using namespace std;
 
 typedef struct typestack_sampah *typeptr_sampah; // linked list untuk oprasi stack sampah
-typedef struct typequeue *typeptr_que;
+typedef struct typequeue *typeptr_que; // Linked List untuk oprasi queue
 typedef struct typestack *typestck; // Linked List untuk oprasi stack
-typedef struct typenode *typeptr;
+typedef struct typenode *typeptr; // Linked List
 fstream file;
+//deklarasi struck linked list
 struct typenode {
     int id_kurir;
-    char nama_kurir[100];
-    char no_kendaraan[8];
+    char nama_kurir[100]; //penggunaan array untuk char
+    char no_kendaraan[8]; //penggunaan array untuk char
     typeptr next;
 };
-struct typestack { // deklarasi
-    char nama_barang[100];
+struct typestack { // deklarasi linked list untuk oprasi stack
+    char nama_barang[100]; //penggunaan array untuk char
     typestck next_stck;
 };
-struct typequeue {
+struct typequeue { // deklarasi linked list untuk oprasi queue
     int que;
     typeptr_que next_que;
 };
-struct typestack_sampah { //deklarasi
+struct typestack_sampah { //deklarasi linked list untuk oprasi stack sampah
     char sampah[100];
     typeptr_sampah next_sampah;
 };
+int batas() { 
+	int awal = 0;
+    string baris;
+    file.open("kurir.txt",  ios::in);
+    while (getline(file, baris)) {
+        awal++;
+    }
+    file.close();
+    return awal/3;
+}
 
 typeptr awal, akhir;
 typestck awal_stack, akhir_stack;
 typeptr_que qdepan, qbelakang;
 typeptr_sampah awalsampah, akhirsampah;
 
+//fungsi-fungsi
 void pop();
 
-void sisip_data(int IB, char IB2[100], char IB3[8]);
+void sisip_data(int IB, char IB2[100], char IB3[8]); // fungsi sisip data ke linked list
 
-void push(char IB[100]);
+void push(char IB[100]);//fungsi push stack
 
-void buat_stack();
+void buat_stack(); //fungsi untuk membuat stack kosong
 
-void cetak_stack();
+void cetak_stack(); // fungsi untuk mencetak stack
 
-void buat_list();
+void buat_list(); //fungsi untuk membuat list
 
-void cetak_list();
+void cetak_list(); // fungsi untuk mencetak list
 
-bool stack_kosong();
+bool stack_kosong(); // fungsi untuk mengetahui apakah stack kosong atau tidak
 
-void hapus_data(int IH);
+void hapus_data(int IH); // fungsi untuk menghapus data pada linked list dan queue
 
 void buatqueue();
 
@@ -69,22 +81,31 @@ void cetak_sampah();
 
 void buat_stack_sampah();
 
-bool listkosong();
+bool listkosong(); // fungsi untuk mengetahui apakah list kosong atau tidak
 
 bool carikurir(int id);
 
 bool cariqueue(int id);
 
+void read();
+
+int batas();
+
 
 
 int main() {
+    //deklarasi Variabel
     int pilihan_barang, pilihan_menu, jumlah_barang, id_kurir, hapus_id;
     char nama_kurir[100], no_kendaraan[8], nama_barang[100];
     char pilihan_hapus, pilihan_pop;
     char pilihan_ulang;
+    //pemangilan Fungsi
     buat_list();
     buat_stack();
     buat_stack_sampah();
+    buatqueue();
+    read();
+    cout<<batas();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -102,7 +123,7 @@ int main() {
             cout << "2. Daftar Kurir\n";
             cout << "3. Hapus Kurir\n";
             cout<<"Antrian Saat ini : ";
-            if (listkosong()) {
+            if (queuekosong()) { // penggunaan percabangan (jika queue dalam keadaan kosong)
                 cout << "Antrian masih kosong";
             } else {
                 cetakqueue();
@@ -111,12 +132,14 @@ int main() {
             cout << "Masukkan Pilihan Anda : ";
             cin >> pilihan_menu;
             if (pilihan_menu == 1) {
+                // menu untuk menambahkan kurir dengan linked list
                 system("cls");
                 cout << "---- Penambahan Kurir ----\n";
                 int jumlah_kurir;
                 cout << "Masukkan jumlah kurir yang ingin ditambahkan: ";
                 cin >> jumlah_kurir;
-                for (int i = 0; i < jumlah_kurir; ++i) {
+                // looping untuk menentukan jumlah kurir yang akan dilakukan
+                for (int i = 0; i < jumlah_kurir; ++i) { // memulai looping
                     cout << "Masukan ID Kurir : ";
                     cin >> id_kurir;
                     cin.ignore();
@@ -124,20 +147,21 @@ int main() {
                     cin.getline (nama_kurir,100);
                     cout << "Masukan No Kendaraan : ";
                     cin.getline (no_kendaraan,8);
-                    sisip_data(id_kurir, nama_kurir, no_kendaraan);
-                    enqueue(id_kurir);
+                    sisip_data(id_kurir, nama_kurir, no_kendaraan); // memasukan data ke linked list
+                    enqueue(id_kurir); // memasukan data ke queue
                 }
-                
                 cout << "Penambahan Kurir Berhasil\n";
             } else if (pilihan_menu == 2) {
                 system("cls");
                 cout << "---- Daftar Kurir ----\n";
+                //percabangan menngunakan IF
                 if (listkosong()) {
                     cout << "Kurir masih kosong\n";
                 } else {
                     cetak_list();
                 }
             } else if (pilihan_menu == 3) {
+                // menu menghapus kurir dengan menggunakan linked list dan seaching
                 system("cls");
                 cout << "---- Hapus Kurir ----\n";
                 cout << "Masukkan ID Kurir yang ingin dihapus: ";
@@ -420,7 +444,7 @@ int queuekosong() {
 
 
 void cetakqueue() {
-    file.open("antrian.txt",ios::out |ios::app);
+    // file.open("antrian.txt",ios::out);
     typeptr_que bantu_que;
     bantu_que = qdepan;
     do {
@@ -431,7 +455,7 @@ void cetakqueue() {
 }
 
 void enqueue(int IB) {
-    file.open("antrian.txt",  ios::in | ios::app );
+    file.close();
     typeptr_que NB;
     NB = new typequeue;
     NB->que = IB;
@@ -443,6 +467,7 @@ void enqueue(int IB) {
     }
     qbelakang = NB;
     qbelakang->next_que = NULL;
+    file.open("antrian.txt",  ios::in | ios::app );
     file << IB << endl;
     file.close();
 }
@@ -545,4 +570,24 @@ bool cariqueue(int id) {
         bantu = bantu->next_que;
     }
     return false;
+}
+
+void read(){
+    int temp;
+    char temp2[100],temp3[8];
+    int nilai=batas();
+    file.open("kurir.txt"); //membuka file buku.txt
+    if (nilai !=0){
+       for(int i = 0; i <nilai ; i++) { //pengulangan untuk me load data dilakukan sampai end of file (datanya habis)
+            file >> temp; //masukkan data yang sudah di load ke variabel temporary
+            file.getline(temp2,100); //
+            file.getline(temp3,8);
+            // cout<<temp<<endl;
+            // cout<<temp2<<endl;
+            // cout<<temp3<<endl;
+            sisip_data(temp,temp2,temp3);
+            // enqueue(temp); //memanggil void push dengan argumen temp dan di masukkan ke stack
+        }
+    }
+    file.close(); //menutup file txt
 }

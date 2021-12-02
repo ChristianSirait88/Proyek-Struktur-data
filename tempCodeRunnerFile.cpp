@@ -1,1 +1,1 @@
- ios::trunc
+file.open("antrian.txt",ios::out);
