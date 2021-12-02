@@ -420,7 +420,7 @@ int queuekosong() {
 
 
 void cetakqueue() {
-    file.open("antrian.txt",ios::out);
+    file.open("antrian.txt",ios::out |ios::app);
     typeptr_que bantu_que;
     bantu_que = qdepan;
     do {
