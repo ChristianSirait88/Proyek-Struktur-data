@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/build",
-  "command": "/usr/bin/c++ -g -std=gnu++14 -o CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o -c \"/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/main.cpp\"",
-  "file": "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/main.cpp"
+  "directory": "C:/Users/Christian Sirait/Desktop/kuli dan yeah/Semester 3/Struktur Data/Program/Proyek-Struktur-data/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -o CMakeFiles\\Proyek_Struktur_data.dir\\main.cpp.obj -c \"C:\\Users\\Christian Sirait\\Desktop\\kuli dan yeah\\Semester 3\\Struktur Data\\Program\\Proyek-Struktur-data\\main.cpp\"",
+  "file": "C:/Users/Christian Sirait/Desktop/kuli dan yeah/Semester 3/Struktur Data/Program/Proyek-Struktur-data/main.cpp"
 }
 ]
