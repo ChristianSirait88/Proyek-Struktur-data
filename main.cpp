@@ -132,7 +132,6 @@ void trunc_sampah() {
     file.open("sampah.txt", ios::out | ios::trunc);
     while (bantu != nullptr) {
         file << bantu->sampah << endl;
-        cout << bantu->sampah << endl;
         bantu = bantu->next_sampah;
     }
     file.close();
@@ -155,19 +154,19 @@ void tambah_sampah(char sampah[100]) {
 }
 
 void tambah_ke_program() {
-    for (int i = 0; i < v_kurir.size(); ++i) {
-        sisip_data(v_kurir.at(i).id_kurir, v_kurir.at(i).nama_kurir, v_kurir.at(i).no_kendaraan);
+    for (auto &i: v_kurir) {
+        sisip_data(i.id_kurir, i.nama_kurir, i.no_kendaraan);
     }
 
-    for (int i = 0; i < v_barang.size(); ++i) {
+    for (int i = v_barang.size() - 1; i >= 0; --i) {
         push(v_barang.at(i).nama_barang);
     }
 
-    for (int i = 0; i < v_antrian.size(); ++i) {
-        enqueue(v_antrian.at(i).que);
+    for (auto &i: v_antrian) {
+        enqueue(i.que);
     }
 
-    for (int i = 0; i < v_sampah.size(); ++i) {
+    for (int i = v_sampah.size() - 1; i >= 0; --i) {
         tambah_sampah(v_sampah.at(i).sampah);
     }
 }
@@ -197,34 +196,29 @@ int main() {
         cin >> pilihan_menu;
         if (pilihan_menu == 1) {
             system("clear");
-            cout << "---- Pendataan Kurir ----\n";
+            cout << "---- Menu Pendataan Kurir ----\n";
             cout << "1. Penambahan Kurir\n";
             cout << "2. Daftar Kurir\n";
             cout << "3. Hapus Kurir\n";
-            cout << "Antrian Saat ini : ";
-            if (queuekosong()) { // penggunaan percabangan (jika queue dalam keadaan kosong)
-                cout << "Antrian masih kosong";
-            } else {
-                cetakqueue();
-            }
-            cout << endl;
+            cout << "4. Antrian Kurir\n";
             cout << "Masukkan Pilihan Anda : ";
             cin >> pilihan_menu;
             if (pilihan_menu == 1) {
                 // menu untuk menambahkan kurir dengan linked list
                 system("clear");
-                cout << "---- Penambahan Kurir ----\n";
+                cout << "------ Penambahan Kurir ------\n";
                 int jumlah_kurir;
-                cout << "Masukkan jumlah kurir yang ingin ditambahkan: ";
+                cout << "Jumlah Kurir yang Ditambahkan: ";
                 cin >> jumlah_kurir;
                 // looping untuk menentukan jumlah kurir yang akan dilakukan
                 for (int i = 0; i < jumlah_kurir; ++i) { // memulai looping
-                    cout << "Masukan ID Kurir : ";
+                    cout << "- Penambahan ke-" << i + 1 << endl;  
+                    cout << "  Masukan ID Kurir: ";
                     cin >> id_kurir;
                     cin.ignore();
-                    cout << "Masukan Nama Kurir : ";
+                    cout << "  Masukan Nama Kurir: ";
                     cin.getline(nama_kurir, 100);
-                    cout << "Masukan No Kendaraan : ";
+                    cout << "  Masukan No Kendaraan: ";
                     cin.getline(no_kendaraan, 8);
                     sisip_data(id_kurir, nama_kurir, no_kendaraan); // memasukan data ke linked list
                     enqueue(id_kurir); // memasukan data ke queue
@@ -235,75 +229,99 @@ int main() {
                 cout << "---- Daftar Kurir ----\n";
                 //percabangan menngunakan IF
                 if (listkosong()) {
-                    cout << "Kurir masih kosong\n";
+                    cout << "- Kurir Kosong\n";
                 } else {
                     cetak_list();
                 }
             } else if (pilihan_menu == 3) {
                 // menu menghapus kurir dengan menggunakan linked list dan seaching
                 system("clear");
-                cout << "---- Hapus Kurir ----\n";
-                cout << "Masukkan ID Kurir yang ingin dihapus: ";
+                cout << "------------ Hapus Kurir ------------\n";
+                cout << "Masukkan ID Kurir yang Ingin Dihapus: ";
                 cin >> hapus_id;
-                cout << "Apakah Anda Yakin Untuk Mengahapus Data ? (Y/n) : ";
+                cout << "Yakin Untuk Menghapus Data? (Y/n): ";
                 cin >> pilihan_hapus;
-                if ((pilihan_hapus == 'y' || pilihan_hapus == 'Y') && carikurir(id_kurir)) {
+                if ((pilihan_hapus == 'y' || pilihan_hapus == 'Y') && carikurir(hapus_id)) {
                     hapus_data(hapus_id);
-                    cout << "Penghapusan kurir berhasil\n";
-                    cetakqueue();
+                    cout << "Penghapusan Kurir Berhasil\n";
                 } else {
-                    cout << "Penghapusan kurir gagal\n";
+                    cout << "Penghapusan Kurir Gagal\n";
+                }
+            } else if (pilihan_menu == 4) {
+                system("clear");
+                cout << "---- Antrian Kurir ----\n";
+                if (queuekosong()) { // penggunaan percabangan (jika queue dalam keadaan kosong)
+                    cout << "- Antrian Kosong\n";
+                } else {
+                    cetakqueue();
                 }
             }
-            cout << "Apakah Ingin Mengulangi Menu ? (y/n) : ";
+            cout << "Ulangi Menu? (y/n): ";
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 2) {
+            system("clear");
             cout << "--- Menu Penginputan Barang ---\n";
             cout << "1. Input Barang\n";
             cout << "2. Lihat Barang\n";
             cout << "Pilihan Menu : ";
             cin >> pilihan_barang;;
             if (pilihan_barang == 1) {
-                cout << "Berapa Barang Yang Akan Di Data : ";
+                system("clear");
+                cout << "--------- Input Barang ---------\n";
+                cout << "Berapa Barang Yang Akan Di Data: ";
                 cin >> jumlah_barang;
                 cin.ignore();
                 for (int i = 1; i <= jumlah_barang; i++) {
-                    cout << "Masukan Nama Barang : ";
+                    cout << "[" << i << "]  Masukan Nama Barang: ";
                     cin.getline(nama_barang, 100);
                     push(nama_barang);
                 }
+                cout << "Penambahan Barang Berhasil\n";
             } else if (pilihan_barang == 2) {
-                cout << "Data Barang\n";
-                cetak_stack();
+                system("clear");
+                cout << "----- Data Barang -----\n";
+                if (stack_kosong()) {
+                    cout << "- Barang Kosong\n";
+                } else {
+                    cetak_stack();
+                }
             }
-            cout << "apakah anda ingin mengulang ?(y/n) : ";
+            cout << "Ulangi Menu? (y/n): ";
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 3) {
-            cout << "Apakah Anda Ingin Mengambil Barang (y/n) : ";
+            system("clear");
+            cout << "----------- Pengambilan Barang -----------\n";
+            cout << "Apakah Anda Ingin Mengambil Barang? (y/n): ";
             cin >> pilihan_pop;
-            if (pilihan_pop == 'y' || pilihan_pop == 'Y') {
+            if ((pilihan_pop == 'y' || pilihan_pop == 'Y') && !queuekosong() && !stack_kosong() && !listkosong()) {
                 sampah();
                 pop();
                 dequeue();
+                cout << "Pengambilan Barang Berhasil\n";
             } else {
-                cout << "apakah anda ingin mengulang ?(y/n) : ";
-                cin >> pilihan_ulang;
+                cout << "Pengambilan Barang Gagal\n";
             }
-            cout << "Apakah Ingin Mengulangi Menu ? (y/n) : ";
+            cout << "Ulangi Menu? (y/n): ";
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 4) {
-            cout << "Barang Yang Sudah Diambil\n";
-            cetak_sampah();
-            cout << "Apakah Ingin Mengulangi Menu ? (y/n) : ";
+            system("clear");
+            cout << "----- Riwayat Pengambilan Barang -----\n";
+            if (awalsampah == nullptr) {
+                cout << "- Pengambilan Barang Belum Dilakukan\n";
+            } else {
+                cetak_sampah();
+            }
+            cout << "Ulangi Menu? (y/n): ";
             cin >> pilihan_ulang;
         } else if (pilihan_menu == 5) {
             cout << "Terima Kasih Telah Menggunakan Program\n";
             break;
         } else {
-            cout << "Pilihan Anda Salah, Apakah Ingin Mengulang ? (y/n) : ";
+            cout << "Pilihan Anda Salah, Ulangi Menu? (y/n): ";
             cin >> pilihan_ulang;
             system("clear");
         }
+        system("clear");
     } while (pilihan_ulang == 'y');
 }
 
@@ -361,9 +379,11 @@ void pop() {
 
 void cetak_stack() {
     typestck bantu = awal_stack;
+    int i = 1;
     while (bantu != NULL) {
-        cout << bantu->nama_barang << "\n";
+        cout << "[" << i << "] " << bantu->nama_barang << endl;
         bantu = bantu->next_stck;
+        i++;
     }
 }
 
@@ -391,9 +411,9 @@ void cetak_list() {
     typeptr bantu;
     bantu = awal;
     while (bantu != NULL) {
-        cout << "ID Kurir : " << bantu->id_kurir << endl;
-        cout << "Nama Kurir : " << bantu->nama_kurir << endl;
-        cout << "No Kendaraan : " << bantu->no_kendaraan << endl;
+        cout << "- ID Kurir: " << bantu->id_kurir << endl;
+        cout << "  Nama Kurir: " << bantu->nama_kurir << endl;
+        cout << "  No Kendaraan: " << bantu->no_kendaraan << endl;
         bantu = bantu->next;
     }
 }
@@ -435,7 +455,6 @@ void hapus_data(int IH) {
         }
     }
 
-    // kemungkinan eror dari sini
     // queue
     typeptr_que qbantu = qdepan, hapusqueue = nullptr;
     if (qdepan == nullptr) {
@@ -489,10 +508,11 @@ int queuekosong() {
 void cetakqueue() {
     typeptr_que bantu_que;
     bantu_que = qdepan;
+    int i = 1;
     do {
-        cout << " " << bantu_que->que;
-        cout << " ";
+        cout << "[" << i << "] ID Kurir: " << bantu_que->que << endl;
         bantu_que = bantu_que->next_que;
+        i++;
     } while (bantu_que != NULL);
 }
 
@@ -533,9 +553,10 @@ void buat_stack_sampah() {
 }
 
 void cetak_sampah() {
+    int i = 1;
     typeptr_sampah depan = nullptr, bantu = nullptr;
     if (awalsampah == akhirsampah) {
-        cout << awalsampah->sampah << endl;
+        cout << "[" << i << "] " << awalsampah->sampah << endl;
     } else {
         depan = awalsampah;
         awalsampah = akhirsampah;
@@ -550,8 +571,9 @@ void cetak_sampah() {
         akhirsampah->next_sampah = NULL;
         bantu = awalsampah;
         while (bantu != NULL) {
-            cout << "" << bantu->sampah << endl;
+            cout << "[" << i << "] " << bantu->sampah << endl;
             bantu = bantu->next_sampah;
+            i++;
         }
     }
 }
