@@ -129,12 +129,47 @@ void trunc_barang() {
 
 void trunc_sampah() {
     typeptr_sampah bantu = awalsampah;
-    file.open("antrian.txt", ios::out | ios::trunc);
+    file.open("sampah.txt", ios::out | ios::trunc);
     while (bantu != nullptr) {
         file << bantu->sampah << endl;
+        cout << bantu->sampah << endl;
         bantu = bantu->next_sampah;
     }
     file.close();
+}
+
+void tambah_sampah(char sampah[100]) {
+    typeptr_sampah sampah_baru;
+    typeptr_sampah bantu;
+    sampah_baru = new typestack_sampah;
+    strcpy(sampah_baru->sampah, sampah);
+    if (awalsampah == nullptr) {
+        awalsampah = sampah_baru;
+        akhirsampah = awalsampah;
+    } else {
+
+        bantu = awalsampah;
+        sampah_baru->next_sampah = bantu;
+        awalsampah = sampah_baru;
+    }
+}
+
+void tambah_ke_program() {
+    for (int i = 0; i < v_kurir.size(); ++i) {
+        sisip_data(v_kurir.at(i).id_kurir, v_kurir.at(i).nama_kurir, v_kurir.at(i).no_kendaraan);
+    }
+
+    for (int i = 0; i < v_barang.size(); ++i) {
+        push(v_barang.at(i).nama_barang);
+    }
+
+    for (int i = 0; i < v_antrian.size(); ++i) {
+        enqueue(v_antrian.at(i).que);
+    }
+
+    for (int i = 0; i < v_sampah.size(); ++i) {
+        tambah_sampah(v_sampah.at(i).sampah);
+    }
 }
 
 int main() {
@@ -149,6 +184,7 @@ int main() {
     buat_stack_sampah();
     buatqueue();
     read();
+    tambah_ke_program();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -308,9 +344,7 @@ void push(char IB[100]) {
         awal_stack = NS;
     }
 
-    file.open("barang.txt", ios::in | ios::app);
-    file << IB << endl;
-    file.close();
+    trunc_barang();
 }
 
 void pop() {
@@ -322,14 +356,7 @@ void pop() {
         delete bantu;
     }
 
-    bantu = awal_stack;
-    file.open("barang.txt", ios::out | ios::trunc);
-    while (bantu != nullptr) {
-        file << bantu->nama_barang << endl;
-        bantu = bantu->next_stck;
-    }
-    file.close();
-
+    trunc_barang();
 }
 
 void cetak_stack() {
@@ -341,7 +368,6 @@ void cetak_stack() {
 }
 
 void sisip_data(int IB, char IB2[100], char IB3[8]) {
-    file.open("kurir.txt", ios::in | ios::app);
     typeptr NB;
     NB = new typenode;
     NB->id_kurir = IB;
@@ -358,16 +384,12 @@ void sisip_data(int IB, char IB2[100], char IB3[8]) {
     akhir = NB;
     akhir->next = NULL;
 
-    file << IB << endl;
-    file << IB2 << endl;
-    file << IB3 << endl;
-    file.close();
+    trunc_kurir();
 }
 
 void cetak_list() {
     typeptr bantu;
     bantu = awal;
-    cout << bantu;
     while (bantu != NULL) {
         cout << "ID Kurir : " << bantu->id_kurir << endl;
         cout << "Nama Kurir : " << bantu->nama_kurir << endl;
@@ -445,22 +467,8 @@ void hapus_data(int IH) {
     }
     // sampe sini
     if (sukses) {
-        bantu = awal;
-        file.open("kurir.txt", ios::in | ios::out | ios::trunc);
-        while (bantu != nullptr) {
-            file << bantu->id_kurir << endl;
-            file << bantu->nama_kurir << endl;
-            file << bantu->no_kendaraan << endl;
-            bantu = bantu->next;
-        }
-        file.close();
-        qbantu = qdepan;
-        file.open("antrian.txt", ios::in | ios::out | ios::trunc);
-        while (qbantu != nullptr) {
-            file << qbantu->que << endl; // error
-            qbantu = qbantu->next_que;
-        }
-        file.close();
+        trunc_kurir();
+        trunc_antrian();
     }
 }
 
@@ -501,14 +509,11 @@ void enqueue(int IB) {
     }
     qbelakang = NB;
     qbelakang->next_que = NULL;
-    file.open("antrian.txt", ios::in | ios::app);
-    file << IB << endl;
-    file.close();
+    trunc_antrian();
 }
 
 void dequeue() {
     typeptr_que hapus;
-    file.open("antrian.txt", ios::in | ios::out | ios::trunc);
     if (queuekosong()) {
         cout << "Antrian masih kosong !";
     } else {
@@ -517,13 +522,7 @@ void dequeue() {
         free(hapus);
     }
 
-    typeptr_que bantu = qdepan;
-
-    while (bantu != nullptr) {
-        file << bantu->que << endl;
-        bantu = bantu->next_que;
-    }
-    file.close();
+    trunc_antrian();
 }
 
 void buat_stack_sampah() {
@@ -558,7 +557,6 @@ void cetak_sampah() {
 }
 
 void sampah() {
-    file.open("sampah.txt", ios::out | ios::trunc);
     typeptr_sampah NS, bantu = nullptr;
     NS = new typestack_sampah;
     strcpy(NS->sampah, awal_stack->nama_barang); // nilai NS akan sama dengan Nilai akhirstack
@@ -571,13 +569,7 @@ void sampah() {
     NS->next_sampah = bantu;
     awalsampah = NS;
 
-    bantu = awalsampah;
-
-    while (bantu != nullptr) {
-        file << bantu->sampah << endl;
-        bantu = bantu->next_sampah;
-    }
-    file.close();
+    trunc_sampah();
 }
 
 bool listkosong() {
@@ -617,7 +609,7 @@ void read() {
     file.open("kurir.txt", ios::in); //membuka file buku.txt
     if (nilai != 0) {
         for (int i = 0; i < nilai; i++) { //pengulangan untuk me load data dilakukan sampai end of file (datanya habis)
-            file >> temp; //masukkan data yang sudah di load ke variabel temporary
+            file >> node_kurir.id_kurir; //masukkan data yang sudah di load ke variabel temporary
             getline(file, escape);
             getline(file, nama_kurir);
             getline(file, no_kendaraan);

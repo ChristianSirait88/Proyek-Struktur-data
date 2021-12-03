@@ -1,1 +1,0 @@
-file.open("antrian.txt",ios::out);
