@@ -1,3 +1,3 @@
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/CMakeFiles/Proyek_Struktur_data.dir
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/cmake-build-debug/CMakeFiles/Proyek_Struktur_data.dir

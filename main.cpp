@@ -1,6 +1,7 @@
 #include <iostream>
 #include <malloc.h>
 #include <string>
+#include <cstring>
 #include <fstream>
 #include <vector>
 
@@ -30,21 +31,26 @@ struct typestack_sampah { //deklarasi linked list untuk oprasi stack sampah
     char sampah[100];
     typeptr_sampah next_sampah;
 };
-int batas() { 
-	int awal = 0;
+
+int batas(string nama_file, int jumlah_atribut) {
+    int jumlah = 0;
     string baris;
-    file.open("kurir.txt",  ios::in);
+    file.open(nama_file, ios::in);
     while (getline(file, baris)) {
-        awal++;
+        jumlah++;
     }
     file.close();
-    return awal/3;
+    return jumlah / jumlah_atribut;
 }
 
 typeptr awal, akhir;
 typestck awal_stack, akhir_stack;
 typeptr_que qdepan, qbelakang;
 typeptr_sampah awalsampah, akhirsampah;
+vector<typenode> v_kurir;
+vector<typestack> v_barang;
+vector<typequeue> v_antrian;
+vector<typestack_sampah> v_sampah;
 
 //fungsi-fungsi
 void pop();
@@ -89,9 +95,47 @@ bool cariqueue(int id);
 
 void read();
 
-int batas();
+void trunc_kurir() {
+    typeptr bantu = awal;
+    file.open("kurir.txt", ios::out | ios::trunc);
+    while (bantu != nullptr) {
+        file << bantu->id_kurir << endl;
+        file << bantu->nama_kurir << endl;
+        file << bantu->no_kendaraan << endl;
+        bantu = bantu->next;
+    }
+    file.close();
+}
 
+void trunc_antrian() {
+    typeptr_que qbantu = qdepan;
+    file.open("antrian.txt", ios::out | ios::trunc);
+    while (qbantu != nullptr) {
+        file << qbantu->que << endl; // error
+        qbantu = qbantu->next_que;
+    }
+    file.close();
+}
 
+void trunc_barang() {
+    typestck bantu = awal_stack;
+    file.open("barang.txt", ios::out | ios::trunc);
+    while (bantu != nullptr) {
+        file << bantu->nama_barang << endl;
+        bantu = bantu->next_stck;
+    }
+    file.close();
+}
+
+void trunc_sampah() {
+    typeptr_sampah bantu = awalsampah;
+    file.open("antrian.txt", ios::out | ios::trunc);
+    while (bantu != nullptr) {
+        file << bantu->sampah << endl;
+        bantu = bantu->next_sampah;
+    }
+    file.close();
+}
 
 int main() {
     //deklarasi Variabel
@@ -105,7 +149,6 @@ int main() {
     buat_stack_sampah();
     buatqueue();
     read();
-    cout<<batas();
     do {
         cout << "---- Pendataan Kurir Gudang XYZ ----" << endl;
         cout << "Menu\n";
@@ -117,23 +160,23 @@ int main() {
         cout << "Masukan Pilihan Anda : ";
         cin >> pilihan_menu;
         if (pilihan_menu == 1) {
-            system("cls");
+            system("clear");
             cout << "---- Pendataan Kurir ----\n";
             cout << "1. Penambahan Kurir\n";
             cout << "2. Daftar Kurir\n";
             cout << "3. Hapus Kurir\n";
-            cout<<"Antrian Saat ini : ";
+            cout << "Antrian Saat ini : ";
             if (queuekosong()) { // penggunaan percabangan (jika queue dalam keadaan kosong)
                 cout << "Antrian masih kosong";
             } else {
                 cetakqueue();
             }
-            cout<<endl;
+            cout << endl;
             cout << "Masukkan Pilihan Anda : ";
             cin >> pilihan_menu;
             if (pilihan_menu == 1) {
                 // menu untuk menambahkan kurir dengan linked list
-                system("cls");
+                system("clear");
                 cout << "---- Penambahan Kurir ----\n";
                 int jumlah_kurir;
                 cout << "Masukkan jumlah kurir yang ingin ditambahkan: ";
@@ -144,15 +187,15 @@ int main() {
                     cin >> id_kurir;
                     cin.ignore();
                     cout << "Masukan Nama Kurir : ";
-                    cin.getline (nama_kurir,100);
+                    cin.getline(nama_kurir, 100);
                     cout << "Masukan No Kendaraan : ";
-                    cin.getline (no_kendaraan,8);
+                    cin.getline(no_kendaraan, 8);
                     sisip_data(id_kurir, nama_kurir, no_kendaraan); // memasukan data ke linked list
                     enqueue(id_kurir); // memasukan data ke queue
                 }
                 cout << "Penambahan Kurir Berhasil\n";
             } else if (pilihan_menu == 2) {
-                system("cls");
+                system("clear");
                 cout << "---- Daftar Kurir ----\n";
                 //percabangan menngunakan IF
                 if (listkosong()) {
@@ -162,7 +205,7 @@ int main() {
                 }
             } else if (pilihan_menu == 3) {
                 // menu menghapus kurir dengan menggunakan linked list dan seaching
-                system("cls");
+                system("clear");
                 cout << "---- Hapus Kurir ----\n";
                 cout << "Masukkan ID Kurir yang ingin dihapus: ";
                 cin >> hapus_id;
@@ -190,7 +233,7 @@ int main() {
                 cin.ignore();
                 for (int i = 1; i <= jumlah_barang; i++) {
                     cout << "Masukan Nama Barang : ";
-                    cin.getline(nama_barang,100);
+                    cin.getline(nama_barang, 100);
                     push(nama_barang);
                 }
             } else if (pilihan_barang == 2) {
@@ -223,7 +266,7 @@ int main() {
         } else {
             cout << "Pilihan Anda Salah, Apakah Ingin Mengulang ? (y/n) : ";
             cin >> pilihan_ulang;
-            system("cls");
+            system("clear");
         }
     } while (pilihan_ulang == 'y');
 }
@@ -251,28 +294,26 @@ bool stack_kosong() {
 }
 
 
-
 void push(char IB[100]) {
-    file.open("barang.txt", ios::in | ios::app);
     typestck NS;
     typestck bantu;
     NS = new typestack;
-    strcpy(NS->nama_barang,IB);
+    strcpy(NS->nama_barang, IB);
 
-    if (awal_stack == nullptr)
+    if (awal_stack == nullptr) {
         awal_stack = NS;
-    else {
+    } else {
         bantu = awal_stack;
         NS->next_stck = bantu;
         awal_stack = NS;
     }
 
+    file.open("barang.txt", ios::in | ios::app);
     file << IB << endl;
     file.close();
 }
 
 void pop() {
-    file.open("barang.txt", ios::out | ios::trunc);
     typestck bantu = awal_stack;
     if (awal_stack == akhir_stack) {
         awal_stack = nullptr;
@@ -282,7 +323,7 @@ void pop() {
     }
 
     bantu = awal_stack;
-    
+    file.open("barang.txt", ios::out | ios::trunc);
     while (bantu != nullptr) {
         file << bantu->nama_barang << endl;
         bantu = bantu->next_stck;
@@ -292,13 +333,11 @@ void pop() {
 }
 
 void cetak_stack() {
-    file.open("barang.txt",ios::out);
     typestck bantu = awal_stack;
     while (bantu != NULL) {
         cout << bantu->nama_barang << "\n";
         bantu = bantu->next_stck;
     }
-    file.close();
 }
 
 void sisip_data(int IB, char IB2[100], char IB3[8]) {
@@ -306,19 +345,19 @@ void sisip_data(int IB, char IB2[100], char IB3[8]) {
     typeptr NB;
     NB = new typenode;
     NB->id_kurir = IB;
-    strcpy(NB->nama_kurir,IB2);
-    strcpy(NB->no_kendaraan,IB3);
+    strcpy(NB->nama_kurir, IB2);
+    strcpy(NB->no_kendaraan, IB3);
     if (awal == nullptr) {
         awal = NB;
         akhir = NB;
         awal->next = NULL;
     } else {
-		akhir->next = NB;
-		
-	}
-	akhir=NB;
-	akhir->next=NULL;
-    
+        akhir->next = NB;
+
+    }
+    akhir = NB;
+    akhir->next = NULL;
+
     file << IB << endl;
     file << IB2 << endl;
     file << IB3 << endl;
@@ -326,17 +365,15 @@ void sisip_data(int IB, char IB2[100], char IB3[8]) {
 }
 
 void cetak_list() {
-    file.open("kurir.txt",ios::out);
     typeptr bantu;
     bantu = awal;
-    cout<<bantu;
+    cout << bantu;
     while (bantu != NULL) {
         cout << "ID Kurir : " << bantu->id_kurir << endl;
         cout << "Nama Kurir : " << bantu->nama_kurir << endl;
         cout << "No Kendaraan : " << bantu->no_kendaraan << endl;
         bantu = bantu->next;
     }
-    file.close();
 }
 
 void hapus_data(int IH) {
@@ -365,12 +402,11 @@ void hapus_data(int IH) {
         bantu = awal;
         while (IH != bantu->next->id_kurir && bantu->next->next != nullptr) {
             bantu = bantu->next;
-            
+
         }
-        if (IH != bantu->next->id_kurir){
-            cout<<"Data Tidak Ditemukan\n";
-        }
-        else{
+        if (IH != bantu->next->id_kurir) {
+            cout << "Data Tidak Ditemukan\n";
+        } else {
             hapus = bantu->next;
             bantu->next = hapus->next;
             free(hapus);
@@ -400,7 +436,7 @@ void hapus_data(int IH) {
     } else {
         sukses = true;
         qbantu = qdepan;
-        while (IH != qbantu->next_que->que  && qbantu->next_que->next_que != nullptr) {
+        while (IH != qbantu->next_que->que && qbantu->next_que->next_que != nullptr) {
             qbantu = qbantu->next_que;
         }
         hapusqueue = qbantu->next_que;
@@ -419,7 +455,7 @@ void hapus_data(int IH) {
         }
         file.close();
         qbantu = qdepan;
-        file.open("antrian.txt",ios::in| ios::out | ios::trunc);
+        file.open("antrian.txt", ios::in | ios::out | ios::trunc);
         while (qbantu != nullptr) {
             file << qbantu->que << endl; // error
             qbantu = qbantu->next_que;
@@ -429,7 +465,6 @@ void hapus_data(int IH) {
 }
 
 void buatqueue() {
-    typeptr_que qdepan;
     qdepan = nullptr;
     qbelakang = qdepan;
 }
@@ -444,7 +479,6 @@ int queuekosong() {
 
 
 void cetakqueue() {
-    // file.open("antrian.txt",ios::out);
     typeptr_que bantu_que;
     bantu_que = qdepan;
     do {
@@ -467,14 +501,14 @@ void enqueue(int IB) {
     }
     qbelakang = NB;
     qbelakang->next_que = NULL;
-    file.open("antrian.txt",  ios::in | ios::app );
+    file.open("antrian.txt", ios::in | ios::app);
     file << IB << endl;
     file.close();
 }
 
 void dequeue() {
     typeptr_que hapus;
-    file.open("antrian.txt", ios::in|ios::out | ios::trunc);
+    file.open("antrian.txt", ios::in | ios::out | ios::trunc);
     if (queuekosong()) {
         cout << "Antrian masih kosong !";
     } else {
@@ -484,7 +518,7 @@ void dequeue() {
     }
 
     typeptr_que bantu = qdepan;
-    
+
     while (bantu != nullptr) {
         file << bantu->que << endl;
         bantu = bantu->next_que;
@@ -527,7 +561,7 @@ void sampah() {
     file.open("sampah.txt", ios::out | ios::trunc);
     typeptr_sampah NS, bantu = nullptr;
     NS = new typestack_sampah;
-    strcpy(NS->sampah,awal_stack->nama_barang); // nilai NS akan sama dengan Nilai akhirstack
+    strcpy(NS->sampah, awal_stack->nama_barang); // nilai NS akan sama dengan Nilai akhirstack
     if (awalsampah == nullptr) {
         awalsampah = NS;
         akhirsampah = awalsampah;
@@ -538,7 +572,7 @@ void sampah() {
     awalsampah = NS;
 
     bantu = awalsampah;
-    
+
     while (bantu != nullptr) {
         file << bantu->sampah << endl;
         bantu = bantu->next_sampah;
@@ -572,22 +606,62 @@ bool cariqueue(int id) {
     return false;
 }
 
-void read(){
+void read() {
     int temp;
-    char temp2[100],temp3[8];
-    int nilai=batas();
-    file.open("kurir.txt"); //membuka file buku.txt
-    if (nilai !=0){
-       for(int i = 0; i <nilai ; i++) { //pengulangan untuk me load data dilakukan sampai end of file (datanya habis)
+    string escape, nama_kurir, no_kendaraan, nama_barang;
+    int nilai;
+
+    // baca file kurir.txt
+    nilai = batas("kurir.txt", 3);
+    typenode node_kurir{};
+    file.open("kurir.txt", ios::in); //membuka file buku.txt
+    if (nilai != 0) {
+        for (int i = 0; i < nilai; i++) { //pengulangan untuk me load data dilakukan sampai end of file (datanya habis)
             file >> temp; //masukkan data yang sudah di load ke variabel temporary
-            file.getline(temp2,100); //
-            file.getline(temp3,8);
-            // cout<<temp<<endl;
-            // cout<<temp2<<endl;
-            // cout<<temp3<<endl;
-            sisip_data(temp,temp2,temp3);
-            // enqueue(temp); //memanggil void push dengan argumen temp dan di masukkan ke stack
+            getline(file, escape);
+            getline(file, nama_kurir);
+            getline(file, no_kendaraan);
+            strcpy(node_kurir.nama_kurir, nama_kurir.c_str());
+            strcpy(node_kurir.no_kendaraan, no_kendaraan.c_str());
+            v_kurir.push_back(node_kurir);
         }
     }
     file.close(); //menutup file txt
+
+    // baca file barang.txt
+    typestack node_barang{};
+    nilai = batas("barang.txt", 1);
+    file.open("barang.txt", ios::in);
+    if (nilai != 0) {
+        for (int i = 0; i < nilai; ++i) {
+            getline(file, nama_barang);
+            strcpy(node_barang.nama_barang, nama_barang.c_str());
+            v_barang.push_back(node_barang);
+        }
+    }
+    file.close();
+
+    typequeue node_antrian{};
+    nilai = batas("antrian.txt", 1);
+
+    file.open("antrian.txt", ios::in);
+    if (nilai != 0) {
+        for (int i = 0; i < nilai; ++i) {
+            file >> node_antrian.que;
+            v_antrian.push_back(node_antrian);
+        }
+    }
+    file.close();
+
+    typestack_sampah node_sampah{};
+    nilai = batas("sampah.txt", 1);
+    file.open("sampah.txt");
+    if (nilai != 0) {
+        for (int i = 0; i < nilai; ++i) {
+            getline(file, nama_barang);
+            strcpy(node_sampah.sampah, nama_barang.c_str());
+            v_sampah.push_back(node_sampah);
+        }
+    }
+    file.close();
 }

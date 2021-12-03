@@ -1,4 +1,4 @@
-/var/lib/snapd/snap/clion/175/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek"
+/var/lib/snapd/snap/clion/175/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data"
 -- The C compiler identification is GNU 11.1.0
 -- The CXX compiler identification is GNU 11.1.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug
+-- Build files have been written to: /mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/cmake-build-debug

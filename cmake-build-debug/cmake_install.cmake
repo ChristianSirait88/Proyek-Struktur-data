@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek
+# Install script for directory: /mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

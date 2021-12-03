@@ -1,3 +1,5 @@
 # ninja log v5
-0	2066	1637766406248058300	CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o	55f8dcefed783364
-2072	3312	1637766407493298200	Proyek_Struktur_data	16ea97be9b9dd02c
+626	1454	1638469244379452800	Proyek_Struktur_data	16ea97be9b9dd02c
+1	626	1638469243551332600	CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o	ba6cc9e6fd705c0b
+0	833	1638469581720107200	CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o	ba6cc9e6fd705c0b
+834	1072	1638469581958660300	Proyek_Struktur_data	16ea97be9b9dd02c

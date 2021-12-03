@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek/main.cpp" "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o" "gcc" "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o.d"
+  "/mnt/EED8B363D8B3292B/Informatics/Sm 3/Praktikum Implementasi Struktur Data/Proyek-Struktur-data/main.cpp" "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o" "gcc" "CMakeFiles/Proyek_Struktur_data.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links.
